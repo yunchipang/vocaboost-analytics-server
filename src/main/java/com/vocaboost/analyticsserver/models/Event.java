@@ -38,4 +38,8 @@ public class Event {
     }
   }
 
+  public String toString() {
+    return String.format("Event: type=%s, userId=%s", this.type, this.userId);
+  }
+
 }
