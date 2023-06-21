@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/event")
+@RequestMapping("/v1/event-tracking")
 public class EventController {
 
   @Autowired
