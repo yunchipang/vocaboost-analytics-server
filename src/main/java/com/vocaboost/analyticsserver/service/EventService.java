@@ -13,11 +13,13 @@ import java.util.List;
 public class EventService {
 
   @Autowired
-  private EventRepository eventRepository;
+  public EventRepository eventRepository;
 
   public List<Event> findAll() {
     return eventRepository.findAll();
   }
+
+  public List<Event> findByType(String type) { return eventRepository.findByType(type); }
 
   public Event findById(String id) {
     return eventRepository.findById(id).orElseThrow(EntityNotFoundException::new);

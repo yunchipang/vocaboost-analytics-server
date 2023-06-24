@@ -2,5 +2,13 @@ package com.vocaboost.analyticsserver.repository;
 
 import com.vocaboost.analyticsserver.model.Event;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
-public interface EventRepository extends MongoRepository<Event, String> {}
+import java.util.List;
+
+public interface EventRepository extends MongoRepository<Event, String> {
+
+  @Query(value = "{ 'type' : ?0 }")
+  List<Event> findByType(String type);
+
+}

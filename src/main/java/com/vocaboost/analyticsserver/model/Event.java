@@ -8,11 +8,11 @@ public class Event {
 
   @Id
   private String id;
-  private String type;
-  private String userId;
-  private String loginMethod;
-  private DeviceInfo deviceInfo;
-  private String ts;
+  private final String type;
+  private final String userId;
+  private final String loginMethod;
+  private final DeviceInfo deviceInfo;
+  private final String ts;
 
   public Event(String type, String userId, String loginMethod, DeviceInfo deviceInfo, String ts) {
     this.type = type;
@@ -24,12 +24,12 @@ public class Event {
 
   // Inner class for deviceInfo
   public static class DeviceInfo {
-    private String uniqueId;
-    private String manufacturer;
-    private String appVersion;
-    private String systemVersion;
-    private String deviceId;
-    private boolean isTablet;
+    private final String uniqueId;
+    private final String manufacturer;
+    private final String appVersion;
+    private final String systemVersion;
+    private final String deviceId;
+    private final boolean isTablet;
 
     public DeviceInfo(String uniqueId, String manufacturer, String appVersion, String systemVersion, String deviceId, boolean isTablet) {
       this.uniqueId = uniqueId;
@@ -40,9 +40,7 @@ public class Event {
       this.isTablet = isTablet;
     }
 
-    public String getUniqueId() {
-      return uniqueId;
-    }
+    public String getUniqueId() { return uniqueId; }
 
     public String getManufacturer() {
       return manufacturer;
