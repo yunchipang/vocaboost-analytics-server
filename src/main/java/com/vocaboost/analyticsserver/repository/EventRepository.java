@@ -11,4 +11,7 @@ public interface EventRepository extends MongoRepository<Event, String> {
   @Query(value = "{ 'type' : ?0 }")
   List<Event> findByType(String type);
 
+  @Query(value = "{ 'type': ?0, 'ts': { $gt: ?1 } }")
+  List<Event> findByTypeAndTime(String type, String ts);
+
 }

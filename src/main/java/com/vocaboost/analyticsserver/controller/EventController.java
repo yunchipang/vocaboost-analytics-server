@@ -19,7 +19,7 @@ import java.util.List;
 public class EventController {
 
   @Autowired
-  private EventService eventService;
+  public EventService eventService;
 
   @GetMapping
   public List<Event> findAll() {
@@ -28,6 +28,11 @@ public class EventController {
 
   @GetMapping(params="type")
   public List<Event> findByType(@RequestParam String type) { return eventService.findByType(type); }
+
+  @GetMapping(params={"type", "hours"})
+  public List<Event> findByTypeAndTime(@RequestParam String type, @RequestParam int hours) {
+    return eventService.findByTypeAndTime(type, hours);
+  }
 
   @GetMapping("/{id}")
   public Event findById(@PathVariable String id) {
