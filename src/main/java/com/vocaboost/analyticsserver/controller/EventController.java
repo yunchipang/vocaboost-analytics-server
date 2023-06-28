@@ -53,7 +53,7 @@ public class EventController {
     } catch (Exception e) {
       return new ResponseEntity<>("creation failed", HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    //MetricsExporterSingleton.getInstance().updateMetrics(event.getType());
+    MetricsExporterSingleton.getInstance().updateMetrics(event.getType());
     return new ResponseEntity<>("created", HttpStatus.CREATED);
   }
 

@@ -13,7 +13,7 @@ public class EnterAppMetricsExporter extends BaseMetricsExporter {
   public EnterAppMetricsExporter(EventTypeEnum type) {
     super(type);
     System.out.println("---------- EnterAppMetricsExporter constructor called");
-//    int count = eventRepository.findByTypeIncludeType(type.getName()).size();
+//    int count = eventService.findByTypeIncludeType(type.getName()).size();
     int count = 111;
     System.out.println("---------- EnterAppMetricsExporter constructed");
     this.gauge.set(count);

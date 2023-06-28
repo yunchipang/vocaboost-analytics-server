@@ -33,34 +33,29 @@ public class MetricsExporterSingleton {
     handlersMap.put(EventTypeEnum.LEAVE_STUDY_SCREEN, new LeaveStudyScreenMetricsExporter(EventTypeEnum.LEAVE_STUDY_SCREEN));
     System.out.println("---------- MetricsExporterSingleton initialize() completed");
   }
-//
-//  public void updateMetrics(String type) {
-//    EventTypeEnum eventType = EventTypeEnum.valueOf(type);
-//    switch (eventType) {
-//      case ENTER_APP:
-//        EnterAppMetricsExporter enterAppMetricsHandler = new EnterAppMetricsExporter(eventType);
-//        enterAppMetricsHandler.increment();
-//        break;
-//      case LOGIN:
-//        LoginMetricsExporter loginMetricHandler = new LoginMetricsExporter(eventType);
-//        loginMetricHandler.increment();
-//        break;
-//      case LOGOUT:
-//        LogoutMetricsExporter logoutMetricsHandler = new LogoutMetricsExporter(eventType);
-//        logoutMetricsHandler.increment();
-//        break;
-//      case ENTER_STUDY_SCREEN:
-//        EnterStudyScreenMetricsExporter enterStudyScreenMetricsHandler = new EnterStudyScreenMetricsExporter(eventType);
-//        enterStudyScreenMetricsHandler.increment();
-//        break;
-//      case LEAVE_STUDY_SCREEN:
-//        LeaveStudyScreenMetricsExporter leaveStudyScreenMetricsHandler = new LeaveStudyScreenMetricsExporter(eventType);
-//        leaveStudyScreenMetricsHandler.increment();
-//        break;
-//      default:
-//        // Handle unsupported event type
-//        break;
-//    }
-//  }
+
+  public void updateMetrics(String type) {
+    EventTypeEnum eventType = EventTypeEnum.valueOf(type);
+    switch (eventType) {
+      case ENTER_APP:
+        handlersMap.get(EventTypeEnum.ENTER_APP).increment();
+        break;
+      case LOGIN:
+        handlersMap.get(EventTypeEnum.LOGIN).increment();
+        break;
+      case LOGOUT:
+        handlersMap.get(EventTypeEnum.LOGOUT).increment();
+        break;
+      case ENTER_STUDY_SCREEN:
+        handlersMap.get(EventTypeEnum.ENTER_STUDY_SCREEN).increment();
+        break;
+      case LEAVE_STUDY_SCREEN:
+        handlersMap.get(EventTypeEnum.LEAVE_STUDY_SCREEN).increment();
+        break;
+      default:
+        // Handle unsupported event type
+        break;
+    }
+  }
 
 }
