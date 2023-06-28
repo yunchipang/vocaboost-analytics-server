@@ -22,7 +22,11 @@ public class EventService {
     return eventRepository.findAll();
   }
 
+  public List<Event> findAllIncludeType() { return eventRepository.findAllIncludeType(); }
+
   public List<Event> findByType(String type) { return eventRepository.findByType(type); }
+
+  public List<Event> findByTypeIncludeType(String type) { return eventRepository.findByTypeIncludeType(type); }
 
   public List<Event> findByTypeAndTime(String type, int hours) {
     LocalDateTime currentDatetime = LocalDateTime.now();

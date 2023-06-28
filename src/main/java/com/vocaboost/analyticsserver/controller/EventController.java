@@ -1,9 +1,12 @@
 package com.vocaboost.analyticsserver.controller;
 
 import com.vocaboost.analyticsserver.model.Event;
+import com.vocaboost.analyticsserver.prometheus.MetricsHandler;
 import com.vocaboost.analyticsserver.service.EventService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +23,8 @@ public class EventController {
 
   @Autowired
   public EventService eventService;
+
+  public MetricsHandler metricsHandler = new MetricsHandler();
 
   @GetMapping
   public List<Event> findAll() {
@@ -40,8 +45,14 @@ public class EventController {
   }
 
   @PostMapping
-  public Event create(@RequestBody Event event) {
-    return eventService.save(event);
+  public ResponseEntity<String> create(@RequestBody Event event) {
+    try {
+      eventService.save(event);
+    } catch (Exception e) {
+      return new ResponseEntity<>("creation failed", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    metricsHandler.updateMetrics(event.getType());
+    return new ResponseEntity<>("created", HttpStatus.CREATED);
   }
 
 }
