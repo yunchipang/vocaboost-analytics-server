@@ -7,13 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class EnterAppMetricsExporter extends BaseMetricsExporter {
 
-  @Autowired
-  EventRepository eventRepository;
+//  @Autowired
+//  EventRepository eventRepository;
 
   public EnterAppMetricsExporter(EventTypeEnum type) {
     super(type);
-    int count = eventRepository.findByType(type.getName()).size();
-    System.out.println("22222");
+    System.out.println("---------- EnterAppMetricsExporter constructor called");
+//    int count = eventRepository.findByTypeIncludeType(type.getName()).size();
+    int count = 111;
+    System.out.println("---------- EnterAppMetricsExporter constructed");
     this.gauge.set(count);
   }
 

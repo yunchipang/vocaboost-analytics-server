@@ -27,11 +27,11 @@ public class MetricsExporterSingleton {
 
   public void initialize() {
     handlersMap.put(EventTypeEnum.ENTER_APP, new EnterAppMetricsExporter(EventTypeEnum.ENTER_APP));
-    System.out.println("333333333");
-//    handlersMap.put(EventTypeEnum.LOGIN, new LoginMetricsExporter(EventTypeEnum.LOGIN));
-//    handlersMap.put(EventTypeEnum.LOGOUT, new LogoutMetricsExporter(EventTypeEnum.LOGOUT));
-//    handlersMap.put(EventTypeEnum.ENTER_STUDY_SCREEN, new EnterStudyScreenMetricsExporter(EventTypeEnum.ENTER_STUDY_SCREEN));
-//    handlersMap.put(EventTypeEnum.LEAVE_STUDY_SCREEN, new LeaveStudyScreenMetricsExporter(EventTypeEnum.LEAVE_STUDY_SCREEN));
+    handlersMap.put(EventTypeEnum.LOGIN, new LoginMetricsExporter(EventTypeEnum.LOGIN));
+    handlersMap.put(EventTypeEnum.LOGOUT, new LogoutMetricsExporter(EventTypeEnum.LOGOUT));
+    handlersMap.put(EventTypeEnum.ENTER_STUDY_SCREEN, new EnterStudyScreenMetricsExporter(EventTypeEnum.ENTER_STUDY_SCREEN));
+    handlersMap.put(EventTypeEnum.LEAVE_STUDY_SCREEN, new LeaveStudyScreenMetricsExporter(EventTypeEnum.LEAVE_STUDY_SCREEN));
+    System.out.println("---------- MetricsExporterSingleton initialize() completed");
   }
 //
 //  public void updateMetrics(String type) {

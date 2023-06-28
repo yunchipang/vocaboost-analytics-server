@@ -1,5 +1,7 @@
 package com.vocaboost.analyticsserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

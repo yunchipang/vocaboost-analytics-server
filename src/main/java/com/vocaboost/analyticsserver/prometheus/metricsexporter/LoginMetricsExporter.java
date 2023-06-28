@@ -7,12 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class LoginMetricsExporter extends BaseMetricsExporter {
 
-  @Autowired
-  EventService eventService;
-
   public LoginMetricsExporter(EventTypeEnum type) {
     super(type);
-    int count = eventService.findByType(type.getName()).size();
+//    int count = eventService.findByTypeIncludeType(type.getName()).size();
+    int count = 444;
     this.gauge.set(count);
   }
 }

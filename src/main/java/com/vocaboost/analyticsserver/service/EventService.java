@@ -16,15 +16,13 @@ import java.util.List;
 public class EventService {
 
   public EventService() {
-    System.out.println("23456789");
+    System.out.println("---------- EventService constructed");
   }
 
   @Autowired
   public EventRepository eventRepository;
 
-  public List<EventEntity> findAll() {
-    return eventRepository.findAll();
-  }
+  public List<EventEntity> findAll() { return eventRepository.findAll(); }
 
   public List<EventEntity> findAllIncludeType() { return eventRepository.findAllIncludeType(); }
 
