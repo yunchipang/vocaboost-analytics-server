@@ -1,7 +1,7 @@
 package com.vocaboost.analyticsserver.controller;
 
-import com.vocaboost.analyticsserver.model.Event;
-import com.vocaboost.analyticsserver.prometheus.MetricsHandler;
+import com.vocaboost.analyticsserver.entity.EventEntity;
+import com.vocaboost.analyticsserver.prometheus.MetricsExporterSingleton;
 import com.vocaboost.analyticsserver.service.EventService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,34 +24,32 @@ public class EventController {
   @Autowired
   public EventService eventService;
 
-  public MetricsHandler metricsHandler = new MetricsHandler();
-
   @GetMapping
-  public List<Event> findAll() {
+  public List<EventEntity> findAll() {
     return eventService.findAll();
   }
 
   @GetMapping(params="type")
-  public List<Event> findByType(@RequestParam String type) { return eventService.findByType(type); }
+  public List<EventEntity> findByType(@RequestParam String type) { return eventService.findByType(type); }
 
   @GetMapping(params={"type", "hours"})
-  public List<Event> findByTypeAndTime(@RequestParam String type, @RequestParam int hours) {
+  public List<EventEntity> findByTypeAndTime(@RequestParam String type, @RequestParam int hours) {
     return eventService.findByTypeAndTime(type, hours);
   }
 
   @GetMapping("/{id}")
-  public Event findById(@PathVariable String id) {
+  public EventEntity findById(@PathVariable String id) {
     return eventService.findById(id);
   }
 
   @PostMapping
-  public ResponseEntity<String> create(@RequestBody Event event) {
+  public ResponseEntity<String> create(@RequestBody EventEntity event) {
     try {
       eventService.save(event);
     } catch (Exception e) {
       return new ResponseEntity<>("creation failed", HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    metricsHandler.updateMetrics(event.getType());
+    //MetricsExporterSingleton.getInstance().updateMetrics(event.getType());
     return new ResponseEntity<>("created", HttpStatus.CREATED);
   }
 

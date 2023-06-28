@@ -1,6 +1,7 @@
 package com.vocaboost.analyticsserver.repository;
 
-import com.vocaboost.analyticsserver.model.Event;
+import com.vocaboost.analyticsserver.entity.EventEntity;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,18 +9,18 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EventRepository extends MongoRepository<Event, String> {
+public interface EventRepository extends MongoRepository<EventEntity, String> {
 
   @Query(value = "{}", fields = "{ 'type' : 1 }")
-  List<Event> findAllIncludeType();
+  List<EventEntity> findAllIncludeType();
 
   @Query(value = "{ 'type' : ?0 }")
-  List<Event> findByType(String type);
+  List<EventEntity> findByType(String type);
 
   @Query(value = "{ 'type' : ?0 }", fields = "{ 'type' : 1 }")
-  List<Event> findByTypeIncludeType(String type);
+  List<EventEntity> findByTypeIncludeType(String type);
 
   @Query(value = "{ 'type': ?0, 'ts': { $gt: ?1 } }")
-  List<Event> findByTypeAndTime(String type, String ts);
+  List<EventEntity> findByTypeAndTime(String type, String ts);
 
 }

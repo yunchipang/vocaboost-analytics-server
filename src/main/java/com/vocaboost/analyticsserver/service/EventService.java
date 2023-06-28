@@ -1,7 +1,7 @@
 package com.vocaboost.analyticsserver.service;
 
 import com.vocaboost.analyticsserver.exception.EntityNotFoundException;
-import com.vocaboost.analyticsserver.model.Event;
+import com.vocaboost.analyticsserver.entity.EventEntity;
 import com.vocaboost.analyticsserver.repository.EventRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,20 +15,24 @@ import java.util.List;
 @Service
 public class EventService {
 
+  public EventService() {
+    System.out.println("23456789");
+  }
+
   @Autowired
   public EventRepository eventRepository;
 
-  public List<Event> findAll() {
+  public List<EventEntity> findAll() {
     return eventRepository.findAll();
   }
 
-  public List<Event> findAllIncludeType() { return eventRepository.findAllIncludeType(); }
+  public List<EventEntity> findAllIncludeType() { return eventRepository.findAllIncludeType(); }
 
-  public List<Event> findByType(String type) { return eventRepository.findByType(type); }
+  public List<EventEntity> findByType(String type) { return eventRepository.findByType(type); }
 
-  public List<Event> findByTypeIncludeType(String type) { return eventRepository.findByTypeIncludeType(type); }
+  public List<EventEntity> findByTypeIncludeType(String type) { return eventRepository.findByTypeIncludeType(type); }
 
-  public List<Event> findByTypeAndTime(String type, int hours) {
+  public List<EventEntity> findByTypeAndTime(String type, int hours) {
     LocalDateTime currentDatetime = LocalDateTime.now();
     LocalDateTime lowerBoundDatetime = currentDatetime.minus(hours, ChronoUnit.HOURS);
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -36,11 +40,11 @@ public class EventService {
     return eventRepository.findByTypeAndTime(type, lowerBoundDatetimeString);
   }
 
-  public Event findById(String id) {
+  public EventEntity findById(String id) {
     return eventRepository.findById(id).orElseThrow(EntityNotFoundException::new);
   }
 
-  public Event save(Event event) {
+  public EventEntity save(EventEntity event) {
     return eventRepository.save(event);
   }
 

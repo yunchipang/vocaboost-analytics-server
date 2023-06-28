@@ -1,10 +1,10 @@
-package com.vocaboost.analyticsserver.model;
+package com.vocaboost.analyticsserver.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Event {
+public class EventEntity {
 
   @Id
   private String id;
@@ -14,7 +14,7 @@ public class Event {
   private final DeviceInfo deviceInfo;
   private final String ts;
 
-  public Event(String type, String userId, String loginMethod, DeviceInfo deviceInfo, String ts) {
+  public EventEntity(String type, String userId, String loginMethod, DeviceInfo deviceInfo, String ts) {
     this.type = type;
     this.userId = userId;
     this.loginMethod = loginMethod;
