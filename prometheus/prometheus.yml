@@ -1,8 +1,8 @@
 remote_write:
 - url: https://prometheus-prod-36-prod-us-west-0.grafana.net/api/prom/push
   basic_auth:
-    username: 1065658
-    password: eyJrIjoiYzhmYWM2MDkwNTQ3MjI1ZDFmNzdiOGJhYTMyMzc5NTM0ZmMwN2IxZCIsIm4iOiJ2b2NhYm9vc3QtcHJvbWV0aGV1cy1pbnN0YW5jZSIsImlkIjo4ODk5Mzh9
+    username: <%= ENV["GRAFANA_USERNAME"] %>
+    password: <%= ENV["GRAFANA_API_KEY"] %>
 
 # my global config
 global:
