@@ -21,10 +21,6 @@ import java.util.List;
 @RequestMapping("/v1/event-tracking")
 public class EventController {
 
-  public EventController() {
-    System.out.println("---------- EventController constructed");
-  }
-
   @Autowired
   public EventService eventService;
 

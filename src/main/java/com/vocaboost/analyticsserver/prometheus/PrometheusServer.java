@@ -12,7 +12,6 @@ public class PrometheusServer {
 
   public PrometheusServer() {
 
-    System.out.println("---------- PrometheusServer constructor called");
     DefaultExports.initialize();
     MetricsExporterSingleton.getInstance().initialize();
 
@@ -21,7 +20,6 @@ public class PrometheusServer {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    System.out.println("---------- PrometheusServer constructed");
   }
 
 }

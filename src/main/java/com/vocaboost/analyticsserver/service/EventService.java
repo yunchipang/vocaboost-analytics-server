@@ -15,10 +15,6 @@ import java.util.List;
 @Service
 public class EventService {
 
-  public EventService() {
-    System.out.println("---------- EventService constructed");
-  }
-
   @Autowired
   public EventRepository eventRepository;
 

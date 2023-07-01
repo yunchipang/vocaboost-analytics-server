@@ -31,7 +31,6 @@ public class MetricsExporterSingleton {
     handlersMap.put(EventTypeEnum.LOGOUT, new LogoutMetricsExporter(EventTypeEnum.LOGOUT));
     handlersMap.put(EventTypeEnum.ENTER_STUDY_SCREEN, new EnterStudyScreenMetricsExporter(EventTypeEnum.ENTER_STUDY_SCREEN));
     handlersMap.put(EventTypeEnum.LEAVE_STUDY_SCREEN, new LeaveStudyScreenMetricsExporter(EventTypeEnum.LEAVE_STUDY_SCREEN));
-    System.out.println("---------- MetricsExporterSingleton initialize() completed");
   }
 
   public void updateMetrics(String type) {

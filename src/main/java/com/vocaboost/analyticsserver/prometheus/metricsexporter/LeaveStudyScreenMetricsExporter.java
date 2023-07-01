@@ -7,7 +7,7 @@ public class LeaveStudyScreenMetricsExporter extends BaseMetricsExporter {
   public LeaveStudyScreenMetricsExporter(EventTypeEnum type) {
     super(type);
 //    int count = eventService.findByTypeIncludeType(type.getName()).size();
-    int count = 333;
+    int count = 0;
     this.gauge.set(count);
   }
 }

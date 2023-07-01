@@ -7,7 +7,7 @@ public class LogoutMetricsExporter extends BaseMetricsExporter {
   public LogoutMetricsExporter(EventTypeEnum type) {
     super(type);
 //    int count = eventService.findByTypeIncludeType(type.getName()).size();
-    int count = 555;
+    int count = 0;
     this.gauge.set(count);
   }
 }
