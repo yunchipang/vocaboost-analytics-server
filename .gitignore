@@ -41,3 +41,9 @@ out/
 
 ### Credentials ###
 .env
+
+### Prometheus ###
+/prometheus/prometheus
+/data/
+/node_exporter/node_exporter
+

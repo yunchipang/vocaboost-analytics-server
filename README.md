@@ -26,11 +26,11 @@ VocabularyBoost (VocaBoost) helps you improve GRE and TOEFL vocabulary in an eff
 - Download [Node Exporter](https://prometheus.io/download/#node_exporter)
 
 ### Grafana
-- Create/sign in to your [Grafana](https://grafana.com/) account
-- Generate an API key. Create a `.env` file in the root directory and store your username & API key
-  ```
-  GRAFANA_USERNAME=xxxxxxxx
-  GRAFANA_API_KEY=xxxxxxxx
+- Create/sign in to your [Grafana](https://grafana.com) account
+- Generate an API key. Set your grafana username and API key to environment variable using shell.
+  ```bash
+  export GRAFANA_USERNAME=xxxxxx // e.g. 1065658
+  export GRAFANA_API_KEY=xxxxxxxxxxxxxxxxxx
   ```
 - Import `grafana/VocaBoost-1688184295940.json` as the dashboard
 
@@ -51,4 +51,13 @@ VocabularyBoost (VocaBoost) helps you improve GRE and TOEFL vocabulary in an eff
 - Stop: `kill -9 $(ps aux | grep prometheus | grep -v 'grep' | awk '{print $2}')`
 
 ### Node Exporter
-- Start: `./node_exporter`
+- Start: `./node_exporter/node_exporter`
+
+## 👀 View Metrics
+Visit `http://localhost:8081/metrics` for raw VocaBoost metrics
+![demo/prometheus_port8081_metrics.png](demo/prometheus_port8081_metrics.png)
+
+Visit `http://localhost:9090/graph` to query a specific metric
+![demo/prometheus_port9090_graph.png](demo/prometheus_port9090_graph.png)
+
+Visit `https://<your-grafana-username>.grafana.net/dashboards` to view visualized metrics overtime
